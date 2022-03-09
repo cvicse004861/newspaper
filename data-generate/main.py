@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import json
 import os
@@ -18,6 +19,9 @@ def generate():
         name = station_csv.name[i] #名称
         lat = station_csv.lat[i] #纬度
         lng = station_csv.lng[i] #经度
+        if (str(lat) == 'nan') or (str(lng) == 'nan'):
+            lat = 0
+            lng = 0
         station_node[id] = {
             'name': name,
             'lat': lat,
